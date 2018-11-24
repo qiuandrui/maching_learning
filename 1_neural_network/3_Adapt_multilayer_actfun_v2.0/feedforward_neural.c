@@ -184,7 +184,9 @@ int main()
     test_data.arg = &test_arg;
     test_data.arg.input_node = -10;
     */
-    
+
+    setbuf(stdout,NULL);
+
     rand_init();
     
     ne = neural_context_alloc();  
@@ -199,7 +201,9 @@ int main()
         ne->run(ne,input_data,GET_DELTA);
         LEARN_LOG("\n\nne->run(ne,NULL,ADD_DELTA);\n\n");
         ne->run(ne,NULL,ADD_DELTA);
-        printf("%d / %d \n",i,LEARNING_NUM);
+        //printf("%d / %d \n",i,LEARNING_NUM);
+        if (0 == i % 1000)
+            printf("\rtraining... ( %-*d%-*c%d )   ", 8, i, 1, '/', LEARNING_NUM);
     }
 #if PRINT_TEST_DATA
     for(i = 0;i < 400;i++){       

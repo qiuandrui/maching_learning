@@ -87,6 +87,7 @@ struct neural_context
     int (*result_print)(struct neural_context * );
 };
 
+void rand_init();
 int neural_result_print(struct neural_context * );
 struct neural_layer * layers_context_alloc(struct neural_arg * );
 struct neural_node * node_context_alloc(struct neural_arg * ,int );
